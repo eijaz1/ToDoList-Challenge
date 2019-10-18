@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a class="btn btn-secondary btn-sm mb-3" href="{% url 'todo_app:index' %}">Back to list</a>
+
+<form method="post">
+	{% csrf_token %} 
+		<div class="form-check">
+			{{ form }}
+		</div>
+	<input type="submit" value="Save" class="btn btn-success btn-lg btn-block mt-4" />
+</form>
+
+{% endblock %}

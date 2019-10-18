@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1 class="text-center mb-3">ToDo List</h1>
+    <div class="text-center">
+        <a href="{% url 'todo_app:create_todo_item' %}" class="btn btn-primary btn-sm">Add Task</a>
+    </div>
+
+    {% if todo_list %}
+        {% for item in todo_list %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h3>{{ item.title }}</h2><br>
+                    <p class="lead">{{ item.description }}</p>
+                    <p class="lead"><b>Due date:</b> {{ item.due_date }}</p>
+                    <p class="lead"><b>Status:</b> {{ item.status }}</p>
+                    <a href="{% url 'todo_app:update_todo_item' item.id %}" class="btn btn-primary btn-sm">Update</a>
+                    <a href="{% url 'todo_app:delete_todo_item' item.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+    
+{% endblock %}
